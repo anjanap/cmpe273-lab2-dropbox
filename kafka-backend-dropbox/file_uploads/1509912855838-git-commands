@@ -1,0 +1,23 @@
+Set global user:
+git config --global user.email "email@example.com"
+git config --global user.email
+
+
+Set folder level user: 
+cd folder
+git config user.email "email@example.com"
+git config user.email
+
+get repository:
+git clone url
+
+get repository status:
+git status
+
+update changes to master:
+git add .
+git commit -a "message" or git commit -m "message"
+git push
+
+get master version: 
+git pull

@@ -36,41 +36,39 @@ class Signup extends Component {
 
     render() {
         return (
-          <div className="container">
-
-          <div className="row">
+          <div>
           <form>
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2">First Name:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="fn" id="fname" onChange={(event)=>{
+           <input type="text" ref="fn" id="fname" className="w3-input" onChange={(event)=>{
                                         this.setState({fname: event.target.value});}} /></div>
           </div>
 
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2">Last Name:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="ln" id="lname" onChange={(event)=>{
+           <input type="text" ref="ln" id="lname" className="w3-input" onChange={(event)=>{
                                         this.setState({lname: event.target.value});}} /></div>
           </div>
 
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2">Email:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="em" id="email" onChange={(event)=>{
+           <input type="text" ref="em" id="email" className="w3-input" onChange={(event)=>{
                                         this.setState({email: event.target.value});}} /></div>
           </div>
 
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="password" ref="pwd" id="pswd" onChange={(event)=>{
+           <input type="password" ref="pwd" id="pswd" className="w3-input" onChange={(event)=>{
                                         this.setState({password: event.target.value});}} /></div>
           </div>
 
           <div className="form-group row">
           <div className="col-sm-4 col-md-4 col-lg-4">
-          <button type="button" onClick={() => this.handleSubmit(this.state)}>Submit</button>
+          <button type="button" className="w3-button w3-green w3-border w3-border-white w3-round-large" onClick={() => this.handleSubmit(this.state)}>Submit</button>
           </div>
           </div>
 
@@ -81,7 +79,6 @@ class Signup extends Component {
           </div>
 
           </form>
-          </div>
 
           </div>
         );

@@ -11,6 +11,13 @@
     background-color: #fff;
 }
 
-.button2 {border-radius: 45%; width: 5.3%;
+.button2 {border-radius: 27%;
      text-align: center;
     line-height: 13px; }
+
+    .button1 {width: 80px;background-color: #45a049;border-radius: 5px;
+      color: white}
+
+.button3{  font-size: 30px;
+  height: 30px;
+}

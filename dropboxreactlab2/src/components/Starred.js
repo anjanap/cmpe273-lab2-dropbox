@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import * as API from '../api/API';
 import {withRouter} from 'react-router-dom';
+import '../styles/tablecss.css';
 
 class Starred extends Component {
 
@@ -26,11 +27,13 @@ class Starred extends Component {
 
     render() {
         return (
-          <div>
-          <h3>Starred Files</h3>
+          <div className="container">
+          <div className="w3-indigo w3-panel"><h3>Starred Files</h3></div>
           {this.state.sfiles.map(f => {
         return ( <div key={Math.random()}>
-                <a href={"http://localhost:3001/download/"+(f)}>{f.substring(14)}</a> 
+        <ul className="w3-ul w3-border">
+              <li>  <a href={"http://localhost:3001/download/"+(f)} className="links">{f.substring(14)}</a>
+                </li></ul>
                  </div>
                  )
       })

@@ -27,12 +27,12 @@ class Createfolder extends Component {
 
     render() {
         return (
-          <div>
-          <h3>Create new folder</h3>
+          <div className="container">
+          <div className="w3-indigo w3-panel"><h3>Create New Folder</h3></div>
           <form>
           Folder Name: <input type="text" id="newfolder" onChange={(event)=>{
                                    this.setState({newFolder: event.target.value});}}/><br/>
-          <button type="button" onClick={() => this.handleNewfolder(this.state)}>Submit</button>
+          <button className="button1" type="button" onClick={() => this.handleNewfolder(this.state)}>Submit</button>
           </form>
           <font color="red">{this.state.folderstatus}</font>
           </div>

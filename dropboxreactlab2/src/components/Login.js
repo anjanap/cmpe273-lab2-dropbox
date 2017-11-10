@@ -4,6 +4,8 @@ import * as API from '../api/API';
 import Home from './Home';
 import Signup from './Signup';
 import { Route} from 'react-router-dom';
+import 'w3-css/w3.css';
+import '../styles/login.css';
 
 class Login extends Component {
   state={
@@ -56,31 +58,33 @@ handleLogout = () => {
     return (
       <div>
 
-      <div className="btitle col-sm-12">
-      <h1 className="ttile">Dropbox</h1>
+      <div className="btitle col-sm-12 w3-indigo">
+      <h1 className="w3-text-white">Dropbox</h1>
       </div>
       <br/><br/><br/>
 
       {this.state.islogged==='false' ?
-        (<div className="container">
-<div className="row">
-        <h1>SIGN IN</h1>
+        (<div className="w3-container w3-panel  w3-border box">
+
+<div className="w3-panel w3-indigo">
+        <h3>SIGN IN</h3>
+        </div>
         <form>
         <div className="form-group row">
         <div className="col-sm-2 col-md-2 col-lg-2">Username:</div>
-         <div className="col-sm-10 col-md-10 col-lg-10"><input type="text" onChange={(event)=>{
+         <div className="col-sm-10 col-md-10 col-lg-10"><input type="text" className="w3-input" onChange={(event)=>{
                                       this.setState({username: event.target.value});}}/></div>
         </div>
 
         <div className="form-group row">
         <div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
-        <div className="col-sm-10 col-md-10 col-lg-10"><input type="password" onChange={(event)=>{
+        <div className="col-sm-10 col-md-10 col-lg-10"><input type="password" className="w3-input" onChange={(event)=>{
                                       this.setState({password: event.target.value});}}/></div>
         </div>
 
         <div className="form-group row">
         <div className="col-sm-4 col-md-4 col-lg-4">
-        <button type="button" onClick={() => this.handleLogin(this.state)}>Submit</button>
+        <button type="button" className="w3-button w3-green w3-border w3-border-white w3-round-large" onClick={() => this.handleLogin(this.state)}>Submit</button>
         </div>
         </div>
 
@@ -89,9 +93,11 @@ handleLogout = () => {
         <font color="red">{this.state.message}</font>
         </div>
         </div>
+        </form>
 
-        </form>  </div>
-        <h1>SIGN UP</h1><Signup /></div>
+        <div className="w3-panel w3-indigo"><h3>SIGN UP</h3></div>
+        <Signup />
+        </div>
       ):(<Home un={this.state.user} handleLogout={this.handleLogout} />)}
 
 

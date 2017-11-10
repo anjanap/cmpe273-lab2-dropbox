@@ -6,39 +6,39 @@ const headers = {
 
 //signup
 export const signup = (payload) =>
-    fetch(`${api}/signup/signup`, {
-        method: 'POST',
-        headers: {
-            ...headers,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    }).then(res=>res.json())
-    .then(res => {
-        return res.output;
-    })
-        .catch(error => {
-            console.log("This is signup error");
-            return error;
-        });
+fetch(`${api}/signup/signup`, {
+  method: 'POST',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+}).then(res=>res.json())
+.then(res => {
+  return res.output;
+})
+.catch(error => {
+  console.log("This is signup error");
+  return error;
+});
 
 //sign in
-        export const checklogin = (payload) =>
-            fetch(`${api}/login`, {
-                method: 'POST',
-                headers: {
-                    ...headers,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            }).then(res=>res.json())
-            .then(res => {
-                return res.output;
-            })
-                .catch(error => {
-                    console.log("This is login error");
-                    return error;
-                });
+export const checklogin = (payload) =>
+fetch(`${api}/login`, {
+  method: 'POST',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+}).then(res=>res.json())
+.then(res => {
+  return res.output;
+})
+.catch(error => {
+  console.log("This is login error");
+  return error;
+});
 
 //logout
 export const logout = () =>
@@ -158,21 +158,38 @@ export const starred = (payload) =>
 
 //update star
 export const starupdate = (payload) =>
-              fetch(`${api}/updatestar`, {
-                method: 'POST',
-                headers: {
-                  ...headers,
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-              }).then(res=>res.json())
-              .then(res => {
-                return res.output;
-              })
-              .catch(error => {
-                console.log("This is update star error");
-                return error;
-              });
+fetch(`${api}/updatestar`, {
+  method: 'POST',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+}).then(res=>res.json())
+.then(res => {
+  return res.output;
+})
+.catch(error => {
+  console.log("This is update star error");
+  return error;
+});
+
+//delete file
+export const deletefile = (payload) =>
+fetch(`${api}/delete`, {
+  method: 'POST',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+}).then(res=>res.json())
+.then(res => {
+  return res.output;
+})
+.catch(error => {
+  return error;
+});
 
 //display activity report
 export const activity = (payload) =>
@@ -188,20 +205,52 @@ fetch(`${api}/activityrep`, {
     return res.output;
   })
   .catch(error => {
-    console.log("This is Activity Report error");
     return error;
   });
 
 //add files to folder
-  export const addtofolder = (payload) =>
-              fetch(`${api}/folderfile`, {
-                  method: 'POST',
-                  body: payload
-              }).then(res=>res.json())
-              .then(res => {
-                  return res.output;
-              })
-                  .catch(error => {
-                      console.log("This is file upload error");
-                      return error;
-                  });
+export const addtofolder = (payload) =>
+fetch(`${api}/folderfile`, {
+  method: 'POST',
+  body: payload
+}).then(res=>res.json())
+.then(res => {
+  return res.output;
+})
+.catch(error => {
+  return error;
+});
+
+//create group
+export const creategroup = (payload) =>
+fetch(`${api}/creategroup`, {
+  method: 'POST',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+}).then(res=>res.json())
+.then(res => {
+  return res.output;
+})
+.catch(error => {
+  return error;
+});
+
+//list all files
+export const listgroups = (payload) =>
+fetch(`${api}/listgroups`, {
+  method: 'POST',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+}).then(res=>res.json())
+.then(res => {
+  return res.output;
+})
+.catch(error => {
+  return error;
+});

@@ -1,0 +1,107 @@
+LAB 7
+
+QUESTION 2
+
+cd src
+go install goapi/
+cd ../bin/
+./goapi
+
+
+QUESTION 3
+docker run --name mongodb -p 27017:27017 -d mongo
+docker run -d --name rabbitmq -p 8080:15672 -p 4369:4369 -p 5672:5672 rabbitmq:3-management
+
+
+
+
+sudo docker run -d --name goapi \
+              --link rabbitmq:rabbitmq \
+              --link mongodb:mongo \
+              -p 3001:3000 \
+              -p 8081:8080 \
+              -p 27018:27017 \
+              -p 5673:5672 \
+              goapi
+
+
+
+
+curl -X POST \
+  http://172.17.0.1:3001/orders \
+  -H 'content-type: application/json'
+
+___________________________________________________________
+
+QUESTION 4
+
+docker run -d --name kong-database -p 9042:9042 cassandra:2.2
+
+docker run -d --name kong \
+          --link kong-database:kong-database \
+          -e "KONG_DATABASE=cassandra" \
+          -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" \
+          -e "KONG_PG_HOST=kong-database" \
+          -p 8000:8000 \
+          -p 8443:8443 \
+          -p 8001:8001 \
+          -p 7946:7946 \
+          -p 7946:7946/udp \
+          kong:0.9.9
+
+
+
+curl -i -X POST \
+  --url http://172.17.0.1:8001/apis/ \
+  --data 'name=gumball' \
+  --data 'upstream_url=http://192.168.42.39:3001' \
+  --data 'request_host=192.168.42.39'
+
+
+
+curl -X POST http://172.17.0.1:8001/apis/gumball/plugins \
+      --data "name=key-auth" \
+      --data "config.hide_credentials=true"
+
+
+
+curl -X POST http://172.17.0.1:8001/consumers/ \
+    --data "username=anjana" \
+    --data "custom_id=cust123"
+
+
+curl -X POST http://172.17.0.1:8001/consumers/anjana/key-auth -d ''
+
+root@saurabh-ubuntu:/home/saurabh/lab7# curl -X POST http://172.17.0.1:8001/consumers/anjana/key-auth -d ''
+{"key":"153cec5ea0cf4e90975784519154bfbf","consumer_id":"374c4343-b1d8-40db-b247-23c0627b380a","created_at":1507783908000,"id":"04f7353e-9647-45a9-aef5-f3cfe8b65880"}
+
+
+
+changes to be made to app.js
+var machine = "http://192.168.42.39:8000/gumball?apikey=153cec5ea0cf4e90975784519154bfbf";
+var endpoint = "http://192.168.42.39:8000/order?apikey=153cec5ea0cf4e90975784519154bfbf";
+
+
+
+curl -X POST \
+  http://172.17.0.1:8000/goapi/order \
+  -H 'apikey: 153cec5ea0cf4e90975784519154bfbf' \
+  -H 'content-type: application/json'
+
+
+____________________________OLD
+
+
+docker run --name mongodb -p 27017:27017 -d mongo
+
+docker run -d --name rabbitmq -p 8080:15672 -p 4369:4369 -p 5672:5672 rabbitmq:3-management
+
+
+sudo docker run -d --name goapi \
+              --link rabbitmq:rabbitmq \
+              --link mongodb:mongo \
+              -p 3001:3000 \
+              -p 8081:8080 \
+              -p 27018:27017 \
+              -p 5673:5672 \
+              goapi

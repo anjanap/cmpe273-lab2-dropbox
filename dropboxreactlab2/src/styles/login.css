@@ -7,3 +7,16 @@ position:absolute;
 .ttile{
 	color: #F0F3F4;
 }
+
+.box {
+    margin: auto;
+    width: 50%;
+    border: 15px solid #73AD21;
+    padding: 10px;
+}
+
+
+.links {
+    text-decoration: underline;
+    color:#2D25DC;
+}

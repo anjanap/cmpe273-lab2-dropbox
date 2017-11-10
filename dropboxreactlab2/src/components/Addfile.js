@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import * as API from '../api/API';
 import {withRouter} from 'react-router-dom';
+import '../styles/tablecss.css';
 
 class Addfile extends Component {
   state={
@@ -36,7 +37,7 @@ handleUpload = (event) => {
         .then((output) => {
             if (output === 1) {
               this.setState({uploadstatus: 'File uploaded.'});
-                console.log("File uploaded" );
+                console.log("File uploaded");
             } else {
               this.setState({uploadstatus: 'File not uploaded.'});
                 console.log("File not uploaded");
@@ -70,15 +71,19 @@ setFolderVal = (na) => {
 
     render() {
         return (
-          <div>
+          <div className="container">
           <font color="red">{this.state.uploadstatus}</font>
-          <h3>Add file</h3>
+          <div className="w3-indigo w3-panel"><h3>Add Files</h3></div>
           <input id="newfile" type="file" name="newfile" onChange={this.handleUpload}/>
 
-          <h3>Add Files to Folders</h3>
+          <br/>
+          <div className="w3-indigo w3-panel"><h3>Add Files to Folders</h3></div>
           {this.state.folders.map(f => {
-          return ( <div key={f.foldername} ref="fold">{f.foldername}
-          <input id="newfile" type="file" name="newfile" onChange={(event)=>{this.handleUpload2(event.target.files[0],f._id);}} /></div>
+          return ( <div key={f.foldername} ref="fold">
+          <ul className="w3-ul w3-border">
+          <li><b>{f.foldername}</b><input id="newfile" type="file" name="newfile" onChange={(event)=>{this.handleUpload2(event.target.files[0],f._id);}}/>
+          </li></ul>
+          </div>
                  )
           })
           }
